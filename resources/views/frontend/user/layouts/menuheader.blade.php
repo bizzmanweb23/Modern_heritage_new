@@ -112,10 +112,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="https://www.bizzmanweb.com/wp-content/themes/bizzman/img/bizzman-logo.png"
-                                alt="Image">
-                        </a>
+                        <!--<a href="index.html">-->
+                        <!--    <img src="https://www.bizzmanweb.com/wp-content/themes/bizzman/img/bizzman-logo.png"-->
+                        <!--        alt="Image">-->
+                        <!--</a>-->
                     </div>
                 </div>
                 <div class="col-lg-5">

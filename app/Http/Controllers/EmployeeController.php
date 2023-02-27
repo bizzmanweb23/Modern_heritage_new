@@ -467,10 +467,11 @@ class EmployeeController extends Controller
     public function editEmployee($id)
     {
         $emp = Employee::select('employees.*', 'departments.department_name', 'job_positions.position_name')
-            ->join('departments', 'departments.id', 'employees.department')
-            ->join('job_positions', 'job_positions.id', 'employees.job_position')
+            ->join('departments as dept', 'dept.id','=','employees.department','left')
+            ->join('job_positions as job', 'job.id','=', 'employees.job_position','left')
             ->where('employees.id', $id)
             ->first();
+            echo '<pre>'; print_r($emp);die;
         $employee['dft_customer'] = DB::table('customer_management')->whereIn('id', explode(',', $emp->default_customer))->get();
 
         $employee['employee'] = $emp;
@@ -671,12 +672,17 @@ class EmployeeController extends Controller
         $emp_salary->emp_id = $request->emp_id;
         $emp_salary->designation = $request->designation;
         $emp_salary->basic_pay = $request->basic_pay;
+        $emp_salary->leave_pay = $request->leave_pay;
+        $emp_salary->bonus = $request->bonus;
         $emp_salary->commission = $request->commission;
+        $emp_salary->incentives = $request->incentives;
         $emp_salary->cpf = $request->cpf;
+        $emp_salary->unpaid_leave = $request->unpaid_leave;
+        $emp_salary->less_pop_over = $request->less_pop_over;
         $emp_salary->insurance = $request->insurance;
         $emp_salary->medical_leave = $request->medical_leave_entitlement;
         $emp_salary->medical_allowance = $request->medical_allowance;
-        $emp_salary->earning = $request->earning;
+        $emp_salary->earning = $request->total_earning;
         $emp_salary->deduction = $request->deduction;
         $emp_salary->net_pay = $request->net_pay;
         $emp_salary->per_trip_charge = $request->per_trip_charge;
@@ -707,16 +713,21 @@ class EmployeeController extends Controller
 
         ]);
 
-        $emp_salary = EmployeeSalary::find($request->id);
+        $emp_salary = EmployeeSalary::find($request->id); 
         $emp_salary->emp_id = $request->emp_id;
         $emp_salary->designation = $request->designation;
         $emp_salary->basic_pay = $request->basic_pay;
+        $emp_salary->leave_pay = $request->leave_pay;
+        $emp_salary->bonus = $request->bonus;
         $emp_salary->commission = $request->commission;
+        $emp_salary->incentives = $request->incentives;
         $emp_salary->cpf = $request->cpf;
+        $emp_salary->unpaid_leave = $request->unpaid_leave;
+        $emp_salary->less_pop_over = $request->less_pop_over;
         $emp_salary->insurance = $request->insurance;
         $emp_salary->medical_leave = $request->medical_leave_entitlement;
         $emp_salary->medical_allowance = $request->medical_allowance;
-        $emp_salary->earning = $request->earning;
+        $emp_salary->earning = $request->total_earning;
         $emp_salary->deduction = $request->deduction;
         $emp_salary->net_pay = $request->net_pay;
         $emp_salary->per_trip_charge = $request->per_trip_charge;
@@ -777,6 +788,22 @@ class EmployeeController extends Controller
             'month' => $month,
             'empName' => $emp->emp_name,
             'designation' => $emp->position_name,
+            'basic_salary'=>$emp->basic_pay,
+            'leave_pay'=>$emp->leave_pay,
+            'bonus'=>$emp->bonus,
+
+            'cpf'=>$emp->cpf,
+            'unpaid_leave'=>$emp->unpaid_leave,
+            'less_pop_over'=>$emp->less_pop_over,
+
+            'commission'=>$emp->commission,
+            'incentives'=>$emp->incentives,
+
+            'earning'=>$emp->earning,
+            'deduction'=>$emp->deduction,
+
+            'net_pay'=>$emp->net_pay,
+
             'date' => date('m/d/Y')
         ];
 

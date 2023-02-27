@@ -35,9 +35,7 @@
               
                 <th>Generate Payslip</th>
            
-                <th>Action</th>
-
-
+                <th>Action</th> 
 
             </tr>
         </thead>
@@ -48,11 +46,8 @@
                 <td style="text-align:center">{{$key+1}}</td>
 
                 <td>{{$e_sl->emp_name }}</td>
-                <td>{{$e_sl->position_name }}</td>
-            
+                <td>{{$e_sl->position_name }}</td> 
                 <td> <a href="generatePayslip/{{$e_sl->id}}" title="edit"><button class="btn btn-info">Generate Payslip</button></a></td>
-            
-
                 <td>
                     <a href="editSalary/{{$e_sl->id}}" title="edit"><span class="badge badge-info"><i class="fas fa-edit"></i></span></a>
                     <a href="javascript:void(0)" onclick="return delete_salary(this.id)" id="{{$e_sl->id}}" title="delete"><span class="badge badge-danger"><i class="fa fa-trash" aria-hidden="true"></i></span></a>

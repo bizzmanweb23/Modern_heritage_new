@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\APIEmployeeController;
-
+use App\Http\Controllers\API\ApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +22,7 @@ use App\Http\Controllers\API\APIEmployeeController;
 // });
 
 Route::get("v1/getemployee", [APIEmployeeController::class, "getEmployees"]);
+
+Route::post('/signup' ,[ApiController::class, 'signup']);
+Route::post('/signin' ,[ApiController::class, 'signin']);
+Route::get('/getProfile',[ApiController::class, 'get_profile']);

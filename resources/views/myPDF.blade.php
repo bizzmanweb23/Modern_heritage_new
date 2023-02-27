@@ -21,40 +21,150 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 </head>
-
+<style type="text/css">
+    table tr td {
+        font-size: 11px;
+        width: 100%; 
+    }
+    p{
+        font-size: 11px;
+    }
+</style>
 <body>
     <div class="container text-center">
-        <h1 class="text-success">{{$title}}</h1><br><br>
+        <h1 class="text-success">{{$title}}</h1> 
         <p>Employee Name: {{$empName}}</p>
         <p>Designation : {{$designation}}</p>
-        <table class="table table-bordered">
+        <table class="table   table-sm"> 
+        <table>
+            <tr>
+                <td>Logo</td>
+                <td>
+                    <b>Employee Payslip </b>for [data] <span>to</span> <span>[data]</span>
+                </td>
+            </tr>
+        </table>
+        <table class="table   table-sm">
+            <tr>
+                <td>Emp Id</td><td>[data]</td>
+                <td>Date Join</td><td>[data]</td>
+            </tr>
+             <tr>
+                <td>Emp Name</td><td>[data]</td>
+                <td>Department</td><td>[data]</td>
+            </tr>
+             <tr>
+                <td>OT Period</td><td>[data]</td>
+                <td>Date of Payment</td><td>[data]</td>
+            </tr>
+             <tr>
+                <td> </td><td> </td>
+                <td>Mode of Payment</td><td>[data]</td>
+            </tr>
+        </table>
+        <hr>
+        <table class="table   table-sm">
+            <tr>
+                <td>
+                    Basic Month 
+                </td>
+                <td>
+                    [data]
+                </td>
+                <td>
+                    Employee CPF
+                </td>
+                <td>
+                    [data]
+                </td>
+            </tr>
+            <tr>
+                <td><u>Allowances</u><td></td></td>
+                <td><u>Allowances</u><td></td></td>
+            </tr>
 
-            <tbody>
-                <tr>
+            <tr>
+                <td>
+                    Petrol
+                </td>
+                <td>
+                    100
+                </td>
+                <td>
+                    CDAC
+                </td>
+                <td>
+                    000
+                </td>
+            </tr>
 
-                    <td>Per Trip Charge</td>
-                    <td>{{$per_trip_charge}}</td>
+            <tr>
+                <td>Performance A</td><td>000</td>
+            </tr>
+            <tr>
+                <td>
+                    <u>Overtime</u>
+                </td>
+            </tr>
+            <tr>
+                <td>OT15 (20.00 * 18.09)</td><td>000</td>
+            </tr>
+             <tr>
+                <td>OT20 (20.00 * 18.09)</td><td>000</td>
+            </tr>
+            <tr>
+                <td>PH_DAY (20.00 * 18.09)</td><td>000</td>
+            </tr>
+            <tr>
+                <td>Employee CPF</td><td>000</td>
+            </tr>
+        </table>
+<hr>
+        <table class="table   table-sm">
+            <tr>
+                <td>
+                    Total Gross Wages
+                </td>
+                <td>
+                    000.00
+                </td>
+                <td>
+                                       <table>
+                       <tr>
+                        <td>
+                            Nett Wages
+                        </td>
+                        <td>
+                            SGD [data]
+                        </td>
+                       </tr>
+                          <tr>
+                        <td>
+                            CPF Wages
+                        </td>
+                        <td>
+                            SGD [data]
+                        </td>
+                       </tr>
+                          <tr>
+                        <td>
+                            Total CPF
+                        </td>
+                        <td>
+                            SGD [data]
+                        </td>
+                       </tr>
+                   </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Thank you for your hardwork. Please clear Your brough forward leave before end of the year.
+                </td>
+            </tr>
+        </table>
 
-                </tr>
-                <tr>
-
-
-                    <td>No of Trip (in the month of {{$month}})</td>
-                    <td>{{$no_trip}}</td>
-
-
-                </tr>
-                <tr>
-
-
-                    <td style="text-align:right">Total</td>
-                    <td>{{$total}}</td>
-
-
-                </tr>
-
-
-            </tbody>
+        
         </table>
     </div>
 </body>

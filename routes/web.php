@@ -34,7 +34,9 @@ use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\LeadController;
-
+use App\Http\Controllers\AdminQuotationController;
+use App\Http\Controllers\SalesOrderController;
+use App\Http\Controllers\AdminAssignOrderController;
 
 
 /*
@@ -111,7 +113,35 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin_auth'], function () {
 
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
 
+    //- admin QuotationController
 
+    Route::view('/test', 'modern-heritage-bill');
+	
+	Route::any('/adminquotation', [AdminQuotationController::class,'index'])->name('adminquotation');
+	Route::any('/save_quotation_details', [AdminQuotationController::class,'save_quotation_details'])->name('save_quotation_details');
+	Route::any('/view_quotation_details', [AdminQuotationController::class,'view_quotation_details'])->name('view_quotation_details');
+    Route::any('/print_quotation_details', [AdminQuotationController::class,'print_quotation_details'])->name('print_quotation_details');
+    Route::get('/print_quotation', [AdminQuotationController::class,'print_quotation'])->name('print_quotation');
+	Route::any('/edit_quotation_details', [AdminQuotationController::class,'edit_quotation_details'])->name('edit_quotation_details');
+	Route::any('/update_quotation_details', [AdminQuotationController::class,'update_quotation_details'])->name('update_quotation_details');
+	Route::any('/delete_quotation_details', [AdminQuotationController::class,'delete_quotation_details'])->name('delete_quotation_details');
+	Route::any('/get_vehicle_detail',[AdminQuotationController::class,'get_vehicle_detail'])->name('get_vehicle_detail');
+    Route::any('/remark_quotation_details', [AdminQuotationController::class,'remark_quotation_details'])->name('remark_quotation_details');
+    Route::post('/add_remark_quotation_details',[AdminQuotationController::class,'add_remark_quotation_details'])->name('add_remark_quotation_details');
+    
+    //admin- assign Orders
+	
+	Route::any('/viewOrders', [AdminAssignOrderController::class,'index'])->name('viewOrders');
+	Route::any('/getDriverId', [AdminAssignOrderController::class,'getDriverId'])->name('getDriverId');
+	Route::any('/getOrderDetails', [AdminAssignOrderController::class,'getOrderDetails'])->name('getOrderDetails');
+    Route::any('/store_assign_driver', [AdminAssignOrderController::class,'store_assign_driver'])->name('store_assign_driver');
+	
+	//- Sales Orders
+	
+	Route::any('/salesOrder', [SalesOrderController::class,'index'])->name('salesOrder');
+	Route::any('/save_sales_order', [SalesOrderController::class,'create'])->name('save_sales_order');
+    Route::get('/get_price', [SalesOrderController::class,'get_price'])->name('get_price');
+	
     //admin--userManagement
     Route::get('/index', [UserController::class, 'allUser'])->name('index');
     Route::get('/addUser', [UserController::class, 'addUser'])->name('addUser');
